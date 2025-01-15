@@ -1,48 +1,58 @@
-# TurtleBot3
-<img src="https://github.com/ROBOTIS-GIT/emanual/blob/master/assets/images/platform/turtlebot3/logo_turtlebot3.png" width="300">
+### Runtime Environment
 
-[![kinetic-devel Status](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/workflows/kinetic-devel/badge.svg)](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/tree/kinetic-devel)
-[![melodic-devel Status](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/workflows/melodic-devel/badge.svg)](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/tree/melodic-devel)
-[![noetic-devel Status](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/workflows/noetic-devel/badge.svg)](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/tree/noetic-devel)
+● Ubuntu 22.04.5 LTS
+● ROS2 Humble
+[ROS2 Humble install link](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)
 
-[![dashing-devel Status](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/workflows/dashing-devel/badge.svg)](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/tree/dashing-devel)
-[![foxy-devel Status](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/workflows/foxy-devel/badge.svg)](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/tree/foxy-devel)
-[![galactic-devel Status](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/workflows/galactic-devel/badge.svg)](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/tree/galactic-devel)
-[![humble-devel Status](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/workflows/humble-devel/badge.svg)](https://github.com/ROBOTIS-GIT/turtlebot3_simulations/tree/humble-devel)
+### How to build?
+1. Install dependencies
+```bash
+$ sudo apt update
+$ sudo apt install ros-humble-gazebo-*
 
-## ROBOTIS e-Manual for TurtleBot3
-- [ROBOTIS e-Manual for TurtleBot3](http://turtlebot3.robotis.com/)
+$ sudo apt install ros-humble-cartographer
+$ sudo apt install ros-humble-cartographer-ros
 
-## Wiki for turtlebot3_simulations Packages
-- http://wiki.ros.org/turtlebot3_simulations (metapackage)
-- http://wiki.ros.org/turtlebot3_fake
-- http://wiki.ros.org/turtlebot3_gazebo
+$ sudo apt install ros-humble-navigation2
+$ sudo apt install ros-humble-nav2-bringup
 
-## Open Source related to TurtleBot3
-- [turtlebot3](https://github.com/ROBOTIS-GIT/turtlebot3)
-- [turtlebot3_msgs](https://github.com/ROBOTIS-GIT/turtlebot3_msgs)
-- [turtlebot3_simulations](https://github.com/ROBOTIS-GIT/turtlebot3_simulations)
-- [turtlebot3_applications_msgs](https://github.com/ROBOTIS-GIT/turtlebot3_applications_msgs)
-- [turtlebot3_applications](https://github.com/ROBOTIS-GIT/turtlebot3_applications)
-- [turtlebot3_autorace](https://github.com/ROBOTIS-GIT/turtlebot3_autorace)
-- [turtlebot3_deliver](https://github.com/ROBOTIS-GIT/turtlebot3_deliver)
-- [hls_lfcd_lds_driver](https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver)
-- [ld08_driver](https://github.com/ROBOTIS-GIT/ld08_driver)
-- [open_manipulator_msgs](https://github.com/ROBOTIS-GIT/open_manipulator_msgs)
-- [open_manipulator](https://github.com/ROBOTIS-GIT/open_manipulator)
-- [open_manipulator_simulations](https://github.com/ROBOTIS-GIT/open_manipulator_simulations)
-- [open_manipulator_perceptions](https://github.com/ROBOTIS-GIT/open_manipulator_perceptions)
-- [open_manipulator_with_tb3_msgs](https://github.com/ROBOTIS-GIT/open_manipulator_with_tb3_msgs)
-- [open_manipulator_with_tb3](https://github.com/ROBOTIS-GIT/open_manipulator_with_tb3)
-- [open_manipulator_with_tb3_simulations](https://github.com/ROBOTIS-GIT/open_manipulator_with_tb3_simulations)
-- [dynamixel_sdk](https://github.com/ROBOTIS-GIT/DynamixelSDK)
-- [OpenCR-Hardware](https://github.com/ROBOTIS-GIT/OpenCR-Hardware)
-- [OpenCR](https://github.com/ROBOTIS-GIT/OpenCR)
+$ sudo apt install ros-humble-dynamixel-sdk
+$ sudo apt install ros-humble-turtlebot3-msgs
+$ sudo apt install ros-humble-turtlebot3
+```
 
-## Documents and Videos related to TurtleBot3
-- [ROBOTIS e-Manual for TurtleBot3](http://turtlebot3.robotis.com/)
-- [ROBOTIS e-Manual for OpenManipulator](http://emanual.robotis.com/docs/en/platform/openmanipulator/)
-- [ROBOTIS e-Manual for Dynamixel SDK](http://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/)
-- [Website for TurtleBot Series](http://www.turtlebot.com/)
-- [e-Book for TurtleBot3](https://community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51/)
-- [Videos for TurtleBot3 ](https://www.youtube.com/playlist?list=PLRG6WP3c31_XI3wlvHlx2Mp8BYqgqDURU)
+2. Create the workspace  
+```bash
+$ mkdir -p ~/turtlebot3_ws/src
+$ cd ~/turtlebot3_ws/src
+$ git clone -b humble-devel https://github.com/DavyJoker/turtlebot3_simulation.git
+```
+
+3. Build
+```bash
+$ cd ~/turtlebot3_ws && colcon build --symlink-install
+
+Starting >>> turtlebot3_fake_node
+Starting >>> turtlebot3_gazebo
+Finished <<< turtlebot3_fake_node [0.09s]
+Finished <<< turtlebot3_gazebo [11.3s]
+Starting >>> turtlebot3_simulations
+Finished <<< turtlebot3_simulations [0.08s]
+
+Summary: 3 packages finished [11.5s]
+
+```
+
+4. Sourcing the environment 
+```bash
+$ echo "source /usr/share/gazebo-11/setup.bash" >> ~/.bashrc #if this step is not done, it may cause errors in the future
+$ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+$ echo "source $HOME/turtlebot3_ws/install/setup.bash" >> ~/.bashrc
+$ echo "export TURTLEBOT3_MODEL=waffle" >> ~/.bashrc
+```
+
+### How to run?
+1. Run Gazebo
+```bash
+$ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+```
