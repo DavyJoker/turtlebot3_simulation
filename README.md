@@ -77,7 +77,9 @@ Please close all the programs above.
 
 4-1. 
 Please modify the code on line 29 of the following file to the one shown below.
+
 /opt/ros/humble/share/turtlebot3_navigation2/param/waffle.yaml
+
 robot_model_type: "nav2_amcl::OmniMotionModel"
 
 4-2.
