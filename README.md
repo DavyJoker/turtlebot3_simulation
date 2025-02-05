@@ -70,18 +70,27 @@ $ ros2 run nav2_map_server map_saver_cli -f ~/map
 ![Example Image](images/2.png)
 
 Make sure that map.pgm and map.yaml have been generated, and that map.pgm contains sufficient information to avoid an incomplete map.
+
 4. Run navigation
 Please close all the programs above.
 4-1. 
+Please modify the code on line 29 of the following file to the one shown below.
+/opt/ros/humble/share/turtlebot3_navigation2/param/waffle.yaml
+robot_model_type: "nav2_amcl::OmniMotionModel"
+
+4-2.
+run gazebo again.
 ```bash
 $ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ```
-4-2.
+4-3.
+run navigation
 ```bash
 $ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
 ```
 ![Example Image](images/3.png)
-4-3.
+4-4.
+load map and Autonomous navigation
 ```bash
 $ ros2 launch my_turtlebot3_navigation static_tf_and_goalpose.launch.py
 ```
