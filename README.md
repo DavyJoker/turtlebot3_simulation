@@ -72,7 +72,9 @@ $ ros2 run nav2_map_server map_saver_cli -f ~/map
 Make sure that map.pgm and map.yaml have been generated, and that map.pgm contains sufficient information to avoid an incomplete map.
 
 4. Run navigation
+
 Please close all the programs above.
+
 4-1. 
 Please modify the code on line 29 of the following file to the one shown below.
 /opt/ros/humble/share/turtlebot3_navigation2/param/waffle.yaml
