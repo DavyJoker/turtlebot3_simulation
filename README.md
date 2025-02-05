@@ -68,8 +68,20 @@ $ ros2 run turtlebot3_teleop teleop_keyboard
 $ ros2 run nav2_map_server map_saver_cli -f ~/map
 ```
 ![Example Image](images/2.png)
+
+Make sure that map.pgm and map.yaml have been generated, and that map.pgm contains sufficient information to avoid an incomplete map.
 4. Run navigation
+Please close all the programs above.
+4-1. 
+```bash
+$ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+```
+4-2.
 ```bash
 $ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
 ```
 ![Example Image](images/3.png)
+4-3.
+```bash
+$ ros2 launch my_turtlebot3_navigation static_tf_and_goalpose.launch.py
+```
